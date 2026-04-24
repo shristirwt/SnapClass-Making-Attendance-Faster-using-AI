@@ -57,12 +57,42 @@ def style_base_layout():
                     color: black !important;
                 }
                 
+                h2.dashboard-title {
+                    color: #5865F2 !important;
+                }
+                
                 h3, h4, p {
                     font-family: 'Outfit', sans-serif;
                 }
                 
+                h2, h3, h4 {
+                    color: black !important;
+                }
+
+
+                [data-testid="stHeader"] h2 {
+                    color: black !important;
+                }
+                
+                
+                input, textarea, [data-testid="stTextInput"] input, [data-testid="stTextArea"] textarea {
+                    background-color: white !important;
+                    color: black !important;
+                    caret-color: black !important;
+                }
+                
+                
+                label, [data-testid="stLabel"] {
+                    color: black !important;
+                }
+                
+                input::placeholder, textarea::placeholder, [data-testid="stTextInput"] input::placeholder, [data-testid="stTextArea"] textarea::placeholder {
+                color: #999999 !important;
+                opacity: 1 !important;
+            }
+                
                 button {
-                    background: #5865F2 !important;
+                    background-color: #5865F2 !important;
                     border-radius: 1.5rem !important;
                     color: white !important;
                     padding: 10px 20px !important;
@@ -71,7 +101,7 @@ def style_base_layout():
                 }
                 
                 button[kind='secondary'] {
-                    background: #EB459E !important;
+                    background-color: #EB459E !important;
                     border-radius: 1.5rem !important;
                     color: white !important;
                     padding: 10px 20px !important;
@@ -80,7 +110,7 @@ def style_base_layout():
                 }
                 
                 button[kind='tertiary'] {
-                    background: black !important;
+                    background-color: black !important;
                     border-radius: 1.5rem !important;
                     color: white !important;
                     padding: 10px 20px !important;
