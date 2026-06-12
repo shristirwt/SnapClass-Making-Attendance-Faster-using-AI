@@ -57,18 +57,19 @@ def student_dashboard():
             
     cols = st.columns(2)
     
+    def render_unenroll_button(current_sid, current_sub_name, index):
+        # We add the loop 'index' to the key so it is 100% unique, even if the DB has duplicates
+        if st.button('Unenroll from this course', type='tertiary', width='stretch', icon=':material/delete_forever:', key=f"unenroll_{current_sid}_{index}"):
+            unenroll_student_to_subject(student_id, current_sid)
+            st.toast(f"Unenroll from {current_sub_name} successfully")
+            st.rerun()
+    
     for i, sub_node in enumerate(subjects):
         sub = sub_node['subjects']
         sid = sub['subject_id']
         
         stats = stats_map.get(sid, {'total':0, 'attended':0})
         
-        def unenroll_button():
-            if st.button('Unenroll from this course', type = 'tertiary', width='stretch', icon = ':material/delete_forever:'):
-                unenroll_student_to_subject(student_id, sid)
-                st.toast(f"Unenroll from {sub['name']} successfully")
-                st.rerun()
-                
         with cols[i%2]:
             subject_card (
                 name = sub['name'],
@@ -78,9 +79,10 @@ def student_dashboard():
                     ('📅', 'Total', stats['total']),
                     ('✅', 'Attended', stats['attended'])
                 ],
-                footer_callback=unenroll_button()
+                footer_callback = lambda current_sid=sid, name=sub['name'], idx=i: render_unenroll_button(current_sid, name, idx)
             )
-
+            
+            
 def student_screen():
     style_background_dashboard()
     style_base_layout()

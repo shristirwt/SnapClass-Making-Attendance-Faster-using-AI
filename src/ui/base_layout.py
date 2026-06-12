@@ -91,7 +91,7 @@ def style_base_layout():
                 opacity: 1 !important;
             }
                 
-                button {
+                button[kind='primary'] {
                     background-color: #5865F2 !important;
                     border-radius: 1.5rem !important;
                     color: white !important;
@@ -120,6 +120,10 @@ def style_base_layout():
                 
                 button:hover {
                     transform: scale(1.05)
+                }
+                
+                div[role="dialog"] label, div[role="dialog"] [data-testid="stLabel"] {
+                    color: white !important;
                 }
             </style>
 """, unsafe_allow_html=True)
