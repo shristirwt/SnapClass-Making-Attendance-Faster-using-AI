@@ -60,6 +60,7 @@ pip install -r requirements.txt
 ```
 
 **4. Setup Environment Variables**
+
 SnapClass uses Supabase for database management. You need to provide your Supabase URL and API Key.
 
 Create a .streamlit folder in the root directory and add a secrets.toml file:
